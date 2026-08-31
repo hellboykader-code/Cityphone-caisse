@@ -2,575 +2,649 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>City Phone & Vape — Caisse</title>
+<title>City Phone — Caisse</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-    :root {
-        --bg: #f5f5f5;
-        --card: #ffffff;
-        --text: #222;
-        --accent: #28a745;
-        --accent2: #007bff;
-    }
-    body.dark {
-        --bg: #111;
-        --card: #1e1e1e;
-        --text: #f5f5f5;
-        --accent: #4caf50;
-        --accent2: #2196f3;
-    }
-    body {
-        margin:0;
-        font-family: Arial, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-    }
-    .screen {
-        max-width: 420px;
-        margin: 0 auto;
-        min-height: 100vh;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        padding:16px;
-    }
-    .card {
-        background: var(--card);
-        border-radius: 16px;
-        padding: 18px;
-        width:100%;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h1,h2,h3 {
-        margin:8px 0;
-        text-align:center;
-    }
-    input, select, button {
-        width:100%;
-        padding:10px;
-        margin:6px 0 10px;
-        font-size:16px;
-        border-radius:8px;
-        border:1px solid #ccc;
-        box-sizing:border-box;
-    }
-    button {
-        border:none;
-        background: var(--accent);
-        color:#fff;
-        font-weight:bold;
-        cursor:pointer;
-    }
-    button.secondary {
-        background: var(--accent2);
-    }
-    button.small {
-        width:auto;
-        padding:6px 10px;
-        font-size:13px;
-        margin-right:4px;
-        margin-bottom:4px;
-    }
-    .row {
-        display:flex;
-        gap:8px;
-    }
-    .row > div {
-        flex:1;
-    }
-    .stats {
-        display:flex;
-        gap:8px;
-        margin:10px 0;
-    }
-    .stat {
-        flex:1;
-        background:#e9ecef;
-        border-radius:10px;
-        padding:8px;
-        font-size:13px;
-        text-align:center;
-    }
-    body.dark .stat { background:#2a2a2a; }
-    .tabs {
-        display:flex;
-        gap:6px;
-        margin:10px 0;
-    }
-    .tab {
-        flex:1;
-        text-align:center;
-        padding:6px;
-        border-radius:999px;
-        font-size:13px;
-        cursor:pointer;
-        background:#e0e0e0;
-    }
-    body.dark .tab { background:#2a2a2a; }
-    .tab.active {
-        background: var(--accent2);
-        color:#fff;
-        font-weight:bold;
-    }
-    .section-title {
-        margin-top:14px;
-        font-weight:bold;
-        font-size:15px;
-    }
-    .type-toggle, .pay-toggle {
-        display:flex;
-        gap:8px;
-        margin:6px 0 10px;
-    }
-    .toggle-btn {
-        flex:1;
-        text-align:center;
-        padding:8px;
-        border-radius:999px;
-        border:1px solid #ccc;
-        cursor:pointer;
-        font-size:14px;
-    }
-    .toggle-btn.active {
-        background: var(--accent2);
-        color:#fff;
-        border-color: var(--accent2);
-        font-weight:bold;
-    }
-    .quick-buttons {
-        margin-bottom:8px;
-    }
-    .history-item {
-        font-size:13px;
-        padding:8px;
-        border-radius:10px;
-        background:#f1f1f1;
-        margin-bottom:6px;
-    }
-    body.dark .history-item { background:#2a2a2a; }
-    .history-item span {
-        display:block;
-    }
-    .top-bar {
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        margin-bottom:8px;
-        font-size:13px;
-    }
-    .link {
-        font-size:12px;
-        color: var(--accent2);
-        cursor:pointer;
-        text-decoration:underline;
-    }
-    canvas {
-        width:100%;
-        max-height:160px;
-    }
-    /* PIN screen */
-    #pin-screen {
-        background:#000;
-        color:#fff;
-    }
-    #pin-screen .card {
-        background:#111;
-        box-shadow:none;
-    }
-    #pin-input {
-        text-align:center;
-        letter-spacing:8px;
-        font-size:20px;
-    }
+  :root {
+    --bg: #050505;
+    --card: #111111;
+    --accent: #d4af37;
+    --accent-soft: rgba(212,175,55,0.15);
+    --text: #f5f5f5;
+    --muted: #888;
+    --danger: #ff6b6b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+    background: radial-gradient(circle at top, #1a1a1a 0, #000 55%);
+    color: var(--text);
+  }
+  .app {
+    max-width: 430px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 18px 16px 24px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #d4af37, #8c6f1d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+    color: #000;
+  }
+  .logo-text {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .logo-sub {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .card {
+    background: rgba(10,10,10,0.9);
+    border-radius: 18px;
+    padding: 16px 14px;
+    box-shadow: 0 0 30px var(--accent-soft);
+    border: 1px solid rgba(255,255,255,0.03);
+    margin-bottom: 14px;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .stats-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .stat {
+    flex: 1;
+    background: #141414;
+    border-radius: 14px;
+    padding: 10px;
+    font-size: 12px;
+  }
+  .stat-label {
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .stat-value {
+    margin-top: 4px;
+    font-weight: 600;
+  }
+  .tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 999px;
+    font-size: 12px;
+    background: #141414;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .tab.active {
+    background: var(--accent);
+    color: #000;
+    font-weight: 600;
+  }
+  label {
+    font-size: 12px;
+    color: var(--muted);
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+  input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    background: #121212;
+    color: var(--text);
+    font-size: 14px;
+  }
+  input::placeholder {
+    color: #555;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 999px;
+    border: none;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-main {
+    background: var(--accent);
+    color: #000;
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  .pill-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .pill {
+    flex: 1;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 999px;
+    font-size: 12px;
+    border: 1px solid #333;
+    cursor: pointer;
+    color: var(--muted);
+  }
+  .pill.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(212,175,55,0.08);
+  }
+  .quick-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .quick-btn {
+    flex: 1;
+    padding: 8px 0;
+    border-radius: 999px;
+    border: 1px solid #333;
+    font-size: 12px;
+    background: #121212;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .history-list {
+    max-height: 260px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  .history-item {
+    background: #141414;
+    border-radius: 14px;
+    padding: 10px;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+  .history-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .history-type {
+    font-weight: 600;
+  }
+  .history-cat {
+    color: var(--muted);
+  }
+  .history-note {
+    margin-top: 2px;
+  }
+  .history-meta {
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .danger-text {
+    color: var(--danger);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 6px;
+  }
+  .nav-bottom {
+    position: sticky;
+    bottom: 0;
+    margin-top: 10px;
+    padding-top: 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  }
+  .nav-row {
+    display: flex;
+    gap: 6px;
+  }
+  .nav-btn {
+    flex: 1;
+    padding: 8px 0;
+    border-radius: 999px;
+    font-size: 12px;
+    text-align: center;
+    background: #141414;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .nav-btn.active {
+    background: var(--accent);
+    color: #000;
+    font-weight: 600;
+  }
+  /* PIN screen */
+  #pin-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+  }
+  #pin-card {
+    max-width: 360px;
+    width: 100%;
+    background: rgba(10,10,10,0.95);
+    border-radius: 20px;
+    padding: 18px 16px 20px;
+    box-shadow: 0 0 30px var(--accent-soft);
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  #pin-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  #pin-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  #pin-input {
+    text-align: center;
+    letter-spacing: 8px;
+    font-size: 20px;
+  }
+  #pin-error {
+    margin-top: 6px;
+  }
 </style>
 </head>
 <body>
 
-<!-- PIN SCREEN -->
-<div class="screen" id="pin-screen">
-    <div class="card">
-        <h2>City Phone & Vape — Caisse</h2>
-        <p style="text-align:center;font-size:14px;">Entrez votre code PIN (4 chiffres)</p>
-        <input type="password" id="pin-input" maxlength="4" placeholder="••••">
-        <button onclick="checkPIN()">Entrer</button>
-        <p id="pin-error" style="color:#ff6b6b;text-align:center;font-size:13px;"></p>
+<div id="pin-screen">
+  <div id="pin-card">
+    <div class="logo">
+      <div class="logo-icon">CP</div>
+      <div>
+        <div id="pin-title">City Phone — Caisse</div>
+        <div id="pin-sub">Entrez votre code PIN (4 chiffres)</div>
+      </div>
     </div>
+    <input id="pin-input" type="password" maxlength="4" placeholder="••••">
+    <button class="btn-main" id="pin-btn">Entrer</button>
+    <div id="pin-error" class="danger-text" style="display:none;">Code PIN incorrect</div>
+  </div>
 </div>
 
-<!-- MAIN APP -->
-<div class="screen" id="app-screen" style="display:none;">
-    <div class="card">
-        <div class="top-bar">
-            <span>City Phone & Vape — Créteil</span>
-            <span class="link" onclick="toggleDark()">Mode sombre</span>
-        </div>
-
-        <h3>Caisse du jour</h3>
-
-        <div class="stats">
-            <div class="stat">
-                <strong>Ventes</strong><br>
-                <span id="stat-ventes">0 €</span>
-            </div>
-            <div class="stat">
-                <strong>Achats</strong><br>
-                <span id="stat-achats">0 €</span>
-            </div>
-            <div class="stat">
-                <strong>Revenu net</strong><br>
-                <span id="stat-net">0 €</span>
-            </div>
-        </div>
-
-        <div class="tabs">
-            <div class="tab active" data-filter="today" onclick="setPeriod(this)">Aujourd’hui</div>
-            <div class="tab" data-filter="7days" onclick="setPeriod(this)">7 jours</div>
-            <div class="tab" data-filter="month" onclick="setPeriod(this)">Ce mois</div>
-            <div class="tab" data-filter="all" onclick="setPeriod(this)">Tout</div>
-        </div>
-
-        <div class="section-title">Nouvelle opération</div>
-
-        <div class="type-toggle">
-            <div class="toggle-btn active" data-type="vente" onclick="setType(this)">Vente</div>
-            <div class="toggle-btn" data-type="achat" onclick="setType(this)">Achat</div>
-        </div>
-
-        <select id="category">
-            <option value="Téléphone">Téléphone</option>
-            <option value="Vape">Vape</option>
-            <option value="Accessoire">Accessoire</option>
-            <option value="Réparation">Réparation</option>
-            <option value="Autre">Autre</option>
-        </select>
-
-        <label style="font-size:13px;">Montant en €</label>
-        <input type="number" id="amount" placeholder="Ex: 120">
-
-        <div class="quick-buttons">
-            <button class="small" onclick="addQuick(10)">+10</button>
-            <button class="small" onclick="addQuick(20)">+20</button>
-            <button class="small" onclick="addQuick(50)">+50</button>
-            <button class="small" onclick="addQuick(100)">+100</button>
-        </div>
-
-        <label style="font-size:13px;">Mode de paiement</label>
-        <div class="pay-toggle">
-            <div class="toggle-btn active" data-pay="CB" onclick="setPay(this)">CB</div>
-            <div class="toggle-btn" data-pay="Cash" onclick="setPay(this)">Cash</div>
-        </div>
-
-        <input type="text" id="note" placeholder="Note (facultatif — ex: iPhone 12 écran)">
-
-        <button id="save-btn" onclick="saveOperation()">Enregistrer la vente</button>
-
-        <div class="section-title">Historique</div>
-
-        <div class="row">
-            <div>
-                <input type="text" id="search" placeholder="Rechercher dans l’historique" oninput="renderHistory()">
-            </div>
-            <div>
-                <select id="filter-category" onchange="renderHistory()">
-                    <option value="">Toutes catégories</option>
-                    <option value="Téléphone">Téléphone</option>
-                    <option value="Vape">Vape</option>
-                    <option value="Accessoire">Accessoire</option>
-                    <option value="Réparation">Réparation</option>
-                    <option value="Autre">Autre</option>
-                </select>
-            </div>
-        </div>
-
-        <div id="history"></div>
-        <div style="text-align:right;margin-top:4px;">
-            <span class="link" onclick="clearAll()">Tout effacer</span>
-        </div>
-
-        <div class="section-title">Statistiques mensuelles</div>
-        <div class="stats">
-            <div class="stat">
-                <strong>Ventes mois</strong><br>
-                <span id="month-ventes">0 €</span>
-            </div>
-            <div class="stat">
-                <strong>Achats mois</strong><br>
-                <span id="month-achats">0 €</span>
-            </div>
-            <div class="stat">
-                <strong>Revenu net mois</strong><br>
-                <span id="month-net">0 €</span>
-            </div>
-        </div>
-
-        <div class="section-title">Graphique du revenu (30 derniers jours)</div>
-        <canvas id="chart" height="120"></canvas>
-
-        <div class="section-title">Export</div>
-        <div class="row">
-            <button class="secondary" onclick="exportJSON()">Exporter en JSON</button>
-            <button class="secondary" onclick="exportCSV()">Exporter en Excel (CSV)</button>
-        </div>
+<div class="app" id="main-app" style="display:none;">
+  <div class="logo">
+    <div class="logo-icon">CP</div>
+    <div>
+      <div class="logo-text">City Phone — Caisse</div>
+      <div class="logo-sub">Créteil — Dark Premium</div>
     </div>
+  </div>
+
+  <div class="card" id="dashboard-card">
+    <div class="card-title">Résumé</div>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-label">Ventes</div>
+        <div class="stat-value" id="stat-ventes">0 €</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Achats</div>
+        <div class="stat-value" id="stat-achats">0 €</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Net</div>
+        <div class="stat-value" id="stat-net">0 €</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="caisse-card">
+    <div class="card-title">Nouvelle opération</div>
+
+    <div class="pill-row">
+      <div class="pill active" data-type="vente">Vente</div>
+      <div class="pill" data-type="achat">Achat</div>
+    </div>
+
+    <label>Montant</label>
+    <input id="amount" type="number" placeholder="Ex: 120">
+
+    <div class="quick-row">
+      <button class="quick-btn" data-add="10">+10</button>
+      <button class="quick-btn" data-add="20">+20</button>
+      <button class="quick-btn" data-add="50">+50</button>
+      <button class="quick-btn" data-add="100">+100</button>
+    </div>
+
+    <label>Catégorie</label>
+    <select id="category">
+      <option value="Téléphone">Téléphone</option>
+      <option value="Vape">Vape</option>
+      <option value="Accessoire">Accessoire</option>
+      <option value="Réparation">Réparation</option>
+      <option value="Autre">Autre</option>
+    </select>
+
+    <label>Mode de paiement</label>
+    <div class="pill-row">
+      <div class="pill active" data-pay="CB">CB</div>
+      <div class="pill" data-pay="Cash">Cash</div>
+    </div>
+
+    <label>Note</label>
+    <input id="note" type="text" placeholder="Ex: iPhone 12 écran">
+
+    <button class="btn-main" id="save-btn">Enregistrer</button>
+  </div>
+
+  <div class="card" id="history-card">
+    <div class="card-title">Historique</div>
+    <div class="tabs">
+      <div class="tab active" data-period="today">Aujourd’hui</div>
+      <div class="tab" data-period="7days">7 jours</div>
+      <div class="tab" data-period="month">Ce mois</div>
+      <div class="tab" data-period="all">Tout</div>
+    </div>
+    <div class="section-title">Opérations</div>
+    <div class="history-list" id="history"></div>
+  </div>
+
+  <div class="card" id="stats-card">
+    <div class="card-title">Statistiques</div>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-label">Ventes mois</div>
+        <div class="stat-value" id="month-ventes">0 €</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Achats mois</div>
+        <div class="stat-value" id="month-achats">0 €</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Net mois</div>
+        <div class="stat-value" id="month-net">0 €</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="settings-card">
+    <div class="card-title">Paramètres</div>
+    <p style="font-size:12px;color:var(--muted);">
+      Les opérations sont stockées dans Firebase (Firestore) et visibles sur tous les appareils.
+    </p>
+    <button class="btn-outline" id="clear-btn">Tout effacer (Firebase)</button>
+    <div id="clear-msg" class="danger-text" style="display:none;">Toutes les opérations ont été supprimées.</div>
+  </div>
+
+  <div class="nav-bottom">
+    <div class="nav-row">
+      <div class="nav-btn active" data-screen="caisse">Caisse</div>
+      <div class="nav-btn" data-screen="history">Historique</div>
+      <div class="nav-btn" data-screen="stats">Stats</div>
+      <div class="nav-btn" data-screen="settings">Réglages</div>
+    </div>
+  </div>
 </div>
 
-<script>
-    const PIN_CODE = "1234";
-    let operations = [];
-    let currentType = "vente";
-    let currentPay = "CB";
-    let currentPeriod = "today";
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    function checkPIN() {
-        const val = document.getElementById("pin-input").value;
-        const err = document.getElementById("pin-error");
-        if (val === PIN_CODE) {
-            document.getElementById("pin-screen").style.display = "none";
-            document.getElementById("app-screen").style.display = "flex";
-            loadData();
-            updateAll();
-        } else {
-            err.textContent = "Code PIN incorrect";
-        }
+  const firebaseConfig = {
+    apiKey: "AIzaSyCv2upeclHRys_l7WtUvr3VWTVL7DJEq3o",
+    authDomain: "cityphone-a3204.firebaseapp.com",
+    projectId: "cityphone-a3204",
+    storageBucket: "cityphone-a3204.firebasestorage.app",
+    messagingSenderId: "798611994944",
+    appId: "1:798611994944:web:2dd866ab7659334b4f62a5",
+    measurementId: "G-HCDDW3FTL1"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const PIN_CODE = "1234";
+  let operations = [];
+  let currentType = "vente";
+  let currentPay = "CB";
+  let currentPeriod = "today";
+
+  const pinScreen = document.getElementById("pin-screen");
+  const mainApp = document.getElementById("main-app");
+  const pinInput = document.getElementById("pin-input");
+  const pinBtn = document.getElementById("pin-btn");
+  const pinError = document.getElementById("pin-error");
+
+  pinBtn.addEventListener("click", checkPIN);
+  pinInput.addEventListener("keyup", e => { if (e.key === "Enter") checkPIN(); });
+
+  function checkPIN() {
+    if (pinInput.value === PIN_CODE) {
+      pinScreen.style.display = "none";
+      mainApp.style.display = "block";
+      startApp();
+    } else {
+      pinError.style.display = "block";
     }
+  }
 
-    function toggleDark() {
-        document.body.classList.toggle("dark");
-    }
+  async function startApp() {
+    operations = await loadOperationsFromFirebase();
+    initUIEvents();
+    updateAll();
+  }
 
-    function setType(el) {
-        document.querySelectorAll(".type-toggle .toggle-btn").forEach(b=>b.classList.remove("active"));
+  async function loadOperationsFromFirebase() {
+    const snap = await getDocs(collection(db, "operations"));
+    const list = [];
+    snap.forEach(d => list.push({ id: d.id, ...d.data() }));
+    return list;
+  }
+
+  async function saveOperationToFirebase(operation) {
+    const ref = await addDoc(collection(db, "operations"), operation);
+    return ref.id;
+  }
+
+  async function clearAllFirebase() {
+    const snap = await getDocs(collection(db, "operations"));
+    const promises = [];
+    snap.forEach(d => promises.push(deleteDoc(doc(db, "operations", d.id))));
+    await Promise.all(promises);
+  }
+
+  function initUIEvents() {
+    document.querySelectorAll(".pill[data-type]").forEach(el => {
+      el.onclick = () => {
+        document.querySelectorAll(".pill[data-type]").forEach(p => p.classList.remove("active"));
         el.classList.add("active");
         currentType = el.dataset.type;
         document.getElementById("save-btn").textContent =
-            currentType === "vente" ? "Enregistrer la vente" : "Enregistrer l’achat";
-    }
+          currentType === "vente" ? "Enregistrer la vente" : "Enregistrer l’achat";
+      };
+    });
 
-    function setPay(el) {
-        document.querySelectorAll(".pay-toggle .toggle-btn").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".pill[data-pay]").forEach(el => {
+      el.onclick = () => {
+        document.querySelectorAll(".pill[data-pay]").forEach(p => p.classList.remove("active"));
         el.classList.add("active");
         currentPay = el.dataset.pay;
-    }
-
-    function addQuick(v) {
-        const amt = document.getElementById("amount");
-        amt.value = Number(amt.value || 0) + v;
-    }
-
-    function saveOperation() {
-        const amount = Number(document.getElementById("amount").value);
-        if (!amount || amount <= 0) {
-            alert("Veuillez entrer un montant valide.");
-            return;
-        }
-        const category = document.getElementById("category").value;
-        const note = document.getElementById("note").value.trim();
-        const date = new Date().toISOString();
-
-        operations.push({
-            type: currentType,
-            categorie: category,
-            montant: amount,
-            paiement: currentPay,
-            note: note,
-            date: date
-        });
-
-        document.getElementById("amount").value = "";
-        document.getElementById("note").value = "";
-
-        saveData();
-        updateAll();
-    }
-
-    function saveData() {
-        localStorage.setItem("city_phone_caisse_ops", JSON.stringify(operations));
-    }
-
-    function loadData() {
-        const raw = localStorage.getItem("city_phone_caisse_ops");
-        if (raw) {
-            try { operations = JSON.parse(raw) || []; } catch(e){ operations = []; }
-        }
-    }
-
-    function setPeriod(el) {
-        document.querySelectorAll(".tabs .tab").forEach(t=>t.classList.remove("active"));
-        el.classList.add("active");
-        currentPeriod = el.dataset.filter;
-        updateAll();
-    }
-
-    function filterByPeriod(list) {
-        const now = new Date();
-        return list.filter(op => {
-            const d = new Date(op.date);
-            if (currentPeriod === "today") {
-                return d.toDateString() === now.toDateString();
-            } else if (currentPeriod === "7days") {
-                const diff = (now - d) / (1000*60*60*24);
-                return diff <= 7;
-            } else if (currentPeriod === "month") {
-                return d.getFullYear() === now.getFullYear() &&
-                       d.getMonth() === now.getMonth();
-            } else {
-                return true;
-            }
-        });
-    }
-
-    function updateStats() {
-        const list = filterByPeriod(operations);
-        const ventes = list.filter(o=>o.type==="vente").reduce((a,b)=>a+b.montant,0);
-        const achats = list.filter(o=>o.type==="achat").reduce((a,b)=>a+b.montant,0);
-        const net = ventes - achats;
-        document.getElementById("stat-ventes").textContent = ventes + " €";
-        document.getElementById("stat-achats").textContent = achats + " €";
-        document.getElementById("stat-net").textContent = net + " €";
-
-        const now = new Date();
-        const monthList = operations.filter(o=>{
-            const d = new Date(o.date);
-            return d.getFullYear() === now.getFullYear() &&
-                   d.getMonth() === now.getMonth();
-        });
-        const mVentes = monthList.filter(o=>o.type==="vente").reduce((a,b)=>a+b.montant,0);
-        const mAchats = monthList.filter(o=>o.type==="achat").reduce((a,b)=>a+b.montant,0);
-        const mNet = mVentes - mAchats;
-        document.getElementById("month-ventes").textContent = mVentes + " €";
-        document.getElementById("month-achats").textContent = mAchats + " €";
-        document.getElementById("month-net").textContent = mNet + " €";
-    }
-
-    function renderHistory() {
-        const container = document.getElementById("history");
-        container.innerHTML = "";
-        let list = filterByPeriod(operations);
-
-        const search = document.getElementById("search").value.toLowerCase();
-        const cat = document.getElementById("filter-category").value;
-
-        if (search) {
-            list = list.filter(o =>
-                (o.note || "").toLowerCase().includes(search) ||
-                o.categorie.toLowerCase().includes(search) ||
-                o.type.toLowerCase().includes(search) ||
-                o.paiement.toLowerCase().includes(search)
-            );
-        }
-        if (cat) {
-            list = list.filter(o => o.categorie === cat);
-        }
-
-        if (!list.length) {
-            container.innerHTML = "<p style='font-size:13px;text-align:center;'>Aucune opération pour cette période</p>";
-            return;
-        }
-
-        list.slice().reverse().forEach(o=>{
-            const d = new Date(o.date);
-            const dateStr = d.toLocaleDateString("fr-FR") + " " +
-                            d.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
-            const div = document.createElement("div");
-            div.className = "history-item";
-            div.innerHTML =
-                `<span><strong>${o.type.toUpperCase()}</strong> — ${o.categorie} — ${o.montant} €</span>` +
-                `<span>Paiement : ${o.paiement}</span>` +
-                (o.note ? `<span>Note : ${o.note}</span>` : "") +
-                `<span style="font-size:11px;color:#777;">${dateStr}</span>`;
-            container.appendChild(div);
-        });
-    }
-
-    function clearAll() {
-        if (!confirm("Tout effacer ?")) return;
-        operations = [];
-        saveData();
-        updateAll();
-    }
-
-    function updateChart() {
-        const canvas = document.getElementById("chart");
-        const ctx = canvas.getContext("2d");
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-
-        const now = new Date();
-        const days = [];
-        const values = [];
-        for (let i=29;i>=0;i--) {
-            const d = new Date(now.getTime() - i*24*60*60*1000);
-            const label = d.getDate()+"/"+(d.getMonth()+1);
-            days.push(label);
-            const dayOps = operations.filter(o=>{
-                const od = new Date(o.date);
-                return od.toDateString() === d.toDateString();
-            });
-            const ventes = dayOps.filter(o=>o.type==="vente").reduce((a,b)=>a+b.montant,0);
-            const achats = dayOps.filter(o=>o.type==="achat").reduce((a,b)=>a+b.montant,0);
-            values.push(ventes - achats);
-        }
-
-        const max = Math.max(...values, 0);
-        const min = Math.min(...values, 0);
-        const range = max - min || 1;
-        const w = canvas.width;
-        const h = canvas.height;
-        const stepX = w / (values.length-1);
-
-        ctx.strokeStyle = "#888";
-        ctx.beginPath();
-        ctx.moveTo(0, h * (max/(range*2)));
-        ctx.lineTo(w, h * (max/(range*2)));
-        ctx.stroke();
-
-        ctx.strokeStyle = "#28a745";
-        ctx.beginPath();
-        values.forEach((v,i)=>{
-            const x = i * stepX;
-            const y = h - ((v - min) / range) * h;
-            if (i===0) ctx.moveTo(x,y);
-            else ctx.lineTo(x,y);
-        });
-        ctx.stroke();
-    }
-
-    function updateAll() {
-        updateStats();
-        renderHistory();
-        updateChart();
-    }
-
-    function exportJSON() {
-        const dataStr = "data:application/json;charset=utf-8," +
-                        encodeURIComponent(JSON.stringify(operations,null,2));
-        const a = document.createElement("a");
-        a.href = dataStr;
-        a.download = "operations.json";
-        a.click();
-    }
-
-    function exportCSV() {
-        const header = ["type","categorie","montant","paiement","note","date"];
-        const rows = operations.map(o=>[
-            o.type,
-            o.categorie,
-            o.montant,
-            o.paiement,
-            (o.note||"").replace(/;/g,","),
-            o.date
-        ]);
-        let csv = header.join(";") + "\n";
-        rows.forEach(r=>{ csv += r.join(";") + "\n"; });
-        const dataStr = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
-        const a = document.createElement("a");
-        a.href = dataStr;
-        a.download = "operations.csv";
-        a.click();
-    }
-
-    window.addEventListener("load", ()=>{
-        // Pré-charger données si PIN déjà entré dans une session future (optionnel)
+      };
     });
+
+    document.querySelectorAll(".quick-btn").forEach(btn => {
+      btn.onclick = () => {
+        const add = Number(btn.dataset.add);
+        const amountInput = document.getElementById("amount");
+        amountInput.value = Number(amountInput.value || 0) + add;
+      };
+    });
+
+    document.getElementById("save-btn").onclick = saveOperation;
+
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.onclick = () => {
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        currentPeriod = tab.dataset.period;
+        updateAll();
+      };
+    });
+
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        showScreen(btn.dataset.screen);
+      };
+    });
+
+    document.getElementById("clear-btn").onclick = async () => {
+      await clearAllFirebase();
+      operations = [];
+      updateAll();
+      document.getElementById("clear-msg").style.display = "block";
+      setTimeout(() => document.getElementById("clear-msg").style.display = "none", 2500);
+    };
+  }
+
+  function showScreen(screen) {
+    document.getElementById("caisse-card").style.display = screen === "caisse" ? "block" : "none";
+    document.getElementById("history-card").style.display = screen === "history" ? "block" : "none";
+    document.getElementById("stats-card").style.display = screen === "stats" ? "block" : "none";
+    document.getElementById("settings-card").style.display = screen === "settings" ? "block" : "none";
+  }
+
+  async function saveOperation() {
+    const amount = Number(document.getElementById("amount").value);
+    if (!amount || amount <= 0) {
+      alert("Veuillez entrer un montant valide.");
+      return;
+    }
+    const category = document.getElementById("category").value;
+    const note = document.getElementById("note").value.trim();
+
+    const op = {
+      type: currentType,
+      categorie: category,
+      montant: amount,
+      paiement: currentPay,
+      note: note,
+      date: new Date().toISOString()
+    };
+
+    const id = await saveOperationToFirebase(op);
+    operations.push({ id, ...op });
+
+    document.getElementById("amount").value = "";
+    document.getElementById("note").value = "";
+
+    updateAll();
+  }
+
+  function filterByPeriod(list) {
+    const now = new Date();
+    return list.filter(op => {
+      const d = new Date(op.date);
+      if (currentPeriod === "today") {
+        return d.toDateString() === now.toDateString();
+      } else if (currentPeriod === "7days") {
+        const diff = (now - d) / (1000*60*60*24);
+        return diff <= 7;
+      } else if (currentPeriod === "month") {
+        return d.getFullYear() === now.getFullYear() &&
+               d.getMonth() === now.getMonth();
+      } else {
+        return true;
+      }
+    });
+  }
+
+  function updateStats() {
+    const list = filterByPeriod(operations);
+    const ventes = list.filter(o => o.type === "vente").reduce((a,b) => a + b.montant, 0);
+    const achats = list.filter(o => o.type === "achat").reduce((a,b) => a + b.montant, 0);
+    const net = ventes - achats;
+
+    document.getElementById("stat-ventes").textContent = ventes + " €";
+    document.getElementById("stat-achats").textContent = achats + " €";
+    document.getElementById("stat-net").textContent = net + " €";
+
+    const now = new Date();
+    const monthList = operations.filter(o => {
+      const d = new Date(o.date);
+      return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth();
+    });
+    const mVentes = monthList.filter(o => o.type === "vente").reduce((a,b) => a + b.montant, 0);
+    const mAchats = monthList.filter(o => o.type === "achat").reduce((a,b) => a + b.montant, 0);
+    const mNet = mVentes - mAchats;
+
+    document.getElementById("month-ventes").textContent = mVentes + " €";
+    document.getElementById("month-achats").textContent = mAchats + " €";
+    document.getElementById("month-net").textContent = mNet + " €";
+  }
+
+  function renderHistory() {
+    const container = document.getElementById("history");
+    container.innerHTML = "";
+    let list = filterByPeriod(operations);
+
+    if (!list.length) {
+      container.innerHTML = "<div style='font-size:12px;color:#777;text-align:center;'>Aucune opération pour cette période</div>";
+      return;
+    }
+
+    list.slice().reverse().forEach(o => {
+      const d = new Date(o.date);
+      const dateStr = d.toLocaleDateString("fr-FR") + " " +
+                      d.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
+      const div = document.createElement("div");
+      div.className = "history-item";
+      div.innerHTML =
+        `<div class="history-top">
+           <span class="history-type">${o.type.toUpperCase()} — ${o.montant} €</span>
+           <span class="history-cat">${o.categorie}</span>
+         </div>` +
+        (o.note ? `<div class="history-note">${o.note}</div>` : "") +
+        `<div class="history-meta">Paiement : ${o.paiement} • ${dateStr}</div>`;
+      container.appendChild(div);
+    });
+  }
+
+  function updateAll() {
+    updateStats();
+    renderHistory();
+  }
 </script>
 
 </body>
